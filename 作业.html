@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#canvas{
+				width: 400px;
+				height:400px;
+				border: solid 1px red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		
+		<script type="text/javascript">
+			// 获取画布
+			var canvas = document.getElementById("canvas");
+			// 获取一个绘图上下文
+			var context = canvas.getContext("2d");
+			var tangram=[{p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:"#caff67"},
+						{p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:"#67becf"},
+						{p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:"#ef3d61"},
+						{p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:"#f9f51a"},
+						{p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:"#a54c09"},
+						{p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:"#fa8ccc"},
+						{p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:"#f6ca29"}];
+			var count=tangram.length;			
+//			context.moveTo(0,0);
+//			context.lineTo(800,0);
+//			context.lineTo(400,400);
+//			context.lineTo(0,0);
+//			context.stroke();
+//			context.fillStyle="#caff67";
+//			context.fill();
+			for(var i=0;i<count;i++){
+				// 开始路径
+			    context.beginPath();
+			var index=tangram[i].p.length;
+				context.moveTo(tangram[i].p[0].x,tangram[i].p[0].y);
+				for(var j=0;j<index;j++){
+				 context.lineTo(tangram[i].p[j].x,tangram[i].p[j].y);
+                 }
+				context.stroke();
+				context.fillStyle=tangram[i].color;
+				context.fill();
+				// 结束路径
+			    context.closePath();	
+				   
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function  addCookie(name,value,time,path){
+				var name = escape(name);
+				var value = escape(value);
+				var expire = new  Date();
+				//设置过期时间
+				expire.setTime(expire.getTime()+time*1000);
+				//设置存储路径
+				path = path==""?"":";path="+path;
+				var _expire = typeof(time)=="string"?"":";expires="+expire.toUTCString();
+				//写入cookie
+				document.cookie=name+"="+value+_expire+path;
+			}
+			
+			
+			
+			function getCookie(name){
+				var name=escape(name);
+				name+="=";
+				var allCookie=document.cookie;
+				var pos=allCookie.indexOf(name);
+				if(pos!=-1){
+					var start=pos+pos.length;
+					var end=allCookie.indexOf(";",start);
+					if(end==-1) end=allC ookie.length;
+					var value=allCookie.substring(start,end);
+					return value;
+				}else{
+					return "";
+				}
+			}
+			function  deleteCookie(name){
+				addCookie(name,"",0);
+			};
+			addCookie("userName","admin123",1000);// 添加
+			console.log(getCookie("userName"));// 获取
+			deleteCookie("userName"); // 删除
+		
+			
+		</script>
+	</body>
+</html>
